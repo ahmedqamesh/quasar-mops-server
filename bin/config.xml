@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration xmlns="http://cern.ch/quasar/Configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cern.ch/quasar/Configuration ../Configuration/Configuration.xsd ">
+	<DcsMoPSControlServer name="Y3523X0"></DcsMoPSControlServer>
+	<DcsMoPSControlServer name="Y3423X8"></DcsMoPSControlServer>
+	<DcsMoPSControlServer name="Y3303X1"></DcsMoPSControlServer>
+	<DcsMoPSControlServer name="Y5904X7"></DcsMoPSControlServer>
+	<MOPS name="M1"></MOPS>
 
 </configuration>
