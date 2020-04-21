@@ -80,7 +80,14 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
 
+void DMOPS::update()
+  {
+	getAddressSpaceLink()->setCh1(rand(), OpcUa_Good);
+	getAddressSpaceLink()->setCh2(rand(), OpcUa_Good);
+	getAddressSpaceLink()->setCh3(rand(), OpcUa_Good);
 
+
+  }
 
 
 }

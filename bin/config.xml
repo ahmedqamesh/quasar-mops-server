@@ -5,5 +5,6 @@
 	<DcsMoPSControlServer name="Y3303X1"></DcsMoPSControlServer>
 	<DcsMoPSControlServer name="Y5904X7"></DcsMoPSControlServer>
 	<MOPS name="M1"></MOPS>
+	<MOPS name="M2"></MOPS>
 
 </configuration>
