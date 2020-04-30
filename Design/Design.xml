@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <d:design projectShortName="" xmlns:d="http://cern.ch/quasar/Design" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cern.ch/quasar/Design Design.xsd ">
   <d:class name="DcsMoPSControlServer">
+  	<d:devicelogic></d:devicelogic>
+  	<d:hasobjects instantiateUsing="configuration" class="PP3Location"></d:hasobjects>
   </d:class>
   <d:class name="MOPS">
   	<d:devicelogic></d:devicelogic>
@@ -11,15 +13,244 @@
   	</d:cachevariable>
   	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Double" name="Ch2" nullPolicy="nullAllowed"
-  		addressSpaceWrite="forbidden" initialStatus="OpcUa_BadWaitingForInitialData">
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
   	</d:cachevariable>
   	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Double" name="Ch3" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden" initialStatus="OpcUa_BadWaitingForInitialData">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch4" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden"
   		initialStatus="OpcUa_BadWaitingForInitialData">
   	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch5" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch6" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch7" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch8" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+   	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch9" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch10" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>  	
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch11" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch12" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch13" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+ 	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch14" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden"
+  		initialStatus="OpcUa_BadWaitingForInitialData">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch15" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch16" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch17" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch18" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+   	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch19" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch20" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch21" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch22" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch23" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+ 	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch24" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden"
+  		initialStatus="OpcUa_BadWaitingForInitialData">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch25" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch26" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch27" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch28" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+   	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch29" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch30" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+   	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch31" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="Ch32" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable> 
+  	<d:configentry dataType="OpcUa_UInt32" name="identifier"
+  		storedInDeviceObject="true">
+  	</d:configentry>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Double" name="refreshRate" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  </d:class>
+  <d:class name="PP3Location">
+  	<d:devicelogic></d:devicelogic>
+  	<d:hasobjects instantiateUsing="configuration" class="MOPSHUBCrate"></d:hasobjects>
+  </d:class>
+  <d:class name="MOPSHUBCrate">
+  	<d:devicelogic></d:devicelogic>
+  	<d:hasobjects instantiateUsing="configuration" class="MOMO"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="CanBus"></d:hasobjects>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Int32" name="id" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Boolean" name="powerOn" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Boolean" name="onOffCrate" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  </d:class>
+  <d:class name="MOMO">
+  	<d:devicelogic></d:devicelogic>
+  	<d:hasobjects instantiateUsing="configuration" class="TemperatureModule"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="CanBusMonitoring"></d:hasobjects>
+  </d:class>
+  <d:class name="TemperatureModule">
+  	<d:devicelogic></d:devicelogic>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Double" name="tempValue1" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Double" name="tempValue2" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Double" name="tempValue3" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Double" name="tempValue4" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  </d:class>
+  <d:class name="CanBusMonitoring">
+  	<d:devicelogic></d:devicelogic>
+  	<d:hasobjects instantiateUsing="configuration" class="VoltageModule"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="CurrentModule"></d:hasobjects>
+  </d:class>
+  <d:class name="CanBus">
+  	<d:devicelogic></d:devicelogic>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="UaString" name="speed" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="UaString" name="port" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="UaString" name="type" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Boolean" name="listenOnly" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Boolean" name="controlEnabled" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:hasobjects instantiateUsing="configuration" class="MOPS"></d:hasobjects>
+  </d:class>
+  <d:class name="VoltageModule">
+  </d:class>
+  <d:class name="CurrentModule">
   </d:class>
   <d:root>
-  	<d:hasobjects instantiateUsing="configuration" class="DcsMoPSControlServer"></d:hasobjects>
-  	<d:hasobjects instantiateUsing="configuration" class="MOPS"></d:hasobjects></d:root>
+  	<d:hasobjects instantiateUsing="configuration" class="DcsMoPSControlServer"></d:hasobjects></d:root>
 </d:design>
