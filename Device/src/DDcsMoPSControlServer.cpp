@@ -86,9 +86,8 @@ namespace Device
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
 
 void DDcsMoPSControlServer::update(){
-
-
-
+	for (DPP3Location* location : pp3locations())
+		location->update();
 }
 
 

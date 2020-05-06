@@ -26,8 +26,9 @@
 
 #include <DMOPS.h>
 #include <ASMOPS.h>
-
-
+#include <DADCChannels.h>
+#include <DMOPSMonitoring.h>
+#include <DMOPSConfiguration.h>
 
 
 
@@ -84,34 +85,13 @@ namespace Device
 void DMOPS::update()
   {
 	//LOG(Log::INF)<<"MOPS ID="<< identifier();
-/*
-	getAddressSpaceLink()->setCh1(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh2(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh3(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh4(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh5(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh6(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh7(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh8(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh9(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh10(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh11(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh12(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh13(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh14(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh15(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh16(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh17(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh18(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh19(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh20(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh21(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh22(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh23(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh24(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setCh25(rand(), OpcUa_Good);
+	for (DADCChannels* adc : adcchannelss())
+		adc->update();
+	for (DMOPSConfiguration* config : mopsconfigurations())
+		config->update();
+	for (DMOPSMonitoring* monitor : mopsmonitorings())
+		monitor->update();
 
-*/
   }
 
 

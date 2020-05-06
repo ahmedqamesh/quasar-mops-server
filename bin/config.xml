@@ -2,7 +2,24 @@
 <configuration xmlns="http://cern.ch/quasar/Configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cern.ch/quasar/Configuration ../Configuration/Configuration.xsd ">
 	
 	<DcsMoPSControlServer name="DetectorServices">
-		<PP3Location name="Y3523X0"></PP3Location>
+		<PP3Location name="Y3523X0">
+			<MOPSHUBCrate powerOn="true" name="Crate1" onOffCrate="true"
+				id="1">
+				<CanBus port="1" name="CAN1" listenOnly="true" type=""
+					speed="" controlEnabled="true">
+					<MOPS name="MOPS1" identifier="0" refreshRate="0.0">
+						<ADCChannels name="ADCChannels" Ch34="0.0" Ch33="0.0"
+							Ch4="0.0" Ch3="0.0">
+						</ADCChannels>
+						<MOPSConfiguration name="MOPSConfiguration"
+							Read_FE_monitoring_values="0.0">
+						</MOPSConfiguration>
+						<MOPSMonitoring BandgapRef="0.0" name="MOPSMonitoring"
+							VCANSEN="0.0" VGNDSEN="0.0">
+						</MOPSMonitoring></MOPS>
+				</CanBus>
+				<MOMO name="MOMO1"></MOMO>
+			</MOPSHUBCrate></PP3Location>
 		<PP3Location name="Y3423X0"></PP3Location>
 		<PP3Location name="Y3423X8"></PP3Location>
 		<PP3Location name="Y5904X7"></PP3Location></DcsMoPSControlServer>

@@ -31,6 +31,7 @@
 #include <DDcsMoPSControlServer.h>
 #include <DPP3Location.h>
 #include <DMOPSHUBCrate.h>
+#include <DCanBus.h>
 QuasarServer::QuasarServer() : BaseQuasarServer()
 {
 
@@ -55,8 +56,6 @@ void QuasarServer::mainLoop()
         // the child of root will have a method called mopss (will return a vector and we will iterate over it )
         for (Device::DDcsMoPSControlServer* controller: Device::DRoot::getInstance()->dcsmopscontrolservers())
         	controller->update();
-
-
     }
 
     printServerMsg(" Shutting down server");
