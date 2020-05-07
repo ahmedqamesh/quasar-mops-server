@@ -65,7 +65,7 @@ namespace Device
     /* fill up constructor initialization list here */
   {
     /* fill up constructor body here */
-	// LOG(Log::INF)<<"MOPS ID="<< config.identifier();
+	LOG(Log::INF)<<"MOPS ID="<< config.identifier();
   }
 
   /* sample dtr */
@@ -84,7 +84,7 @@ namespace Device
 
 void DMOPS::update()
   {
-	//LOG(Log::INF)<<"MOPS ID="<< identifier();
+	LOG(Log::INF)<<"MOPS ID="<< identifier();
 	for (DADCChannels* adc : adcchannelss())
 		adc->update();
 	for (DMOPSConfiguration* config : mopsconfigurations())

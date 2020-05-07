@@ -69,6 +69,7 @@ namespace Device
     /* fill up constructor initialization list here */
   {
     /* fill up constructor body here */
+	  LOG(Log::INF)<<"Crate ID="<< config.identifier();
   }
 
   /* sample dtr */

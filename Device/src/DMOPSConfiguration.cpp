@@ -83,7 +83,7 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
   void DMOPSConfiguration::update(){
-	getAddressSpaceLink()->setRead_FE_monitoring_values(rand(), OpcUa_Good);
+	getAddressSpaceLink()->setReadFEMonitoringValues(rand(), OpcUa_Good);
   }
 
 }

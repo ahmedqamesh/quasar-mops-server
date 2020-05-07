@@ -7,12 +7,7 @@
   <d:class name="MOPS">
   	<d:devicelogic></d:devicelogic>
   	<d:cachevariable initializeWith="valueAndStatus"
-  		dataType="OpcUa_Double" name="Ch1" nullPolicy="nullAllowed"
-  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
-  		initialValue="0">
-  	</d:cachevariable>
-  	<d:cachevariable initializeWith="valueAndStatus"
-  		dataType="OpcUa_Double" name="Ch2" nullPolicy="nullAllowed"
+  		dataType="UaString" name="location" nullPolicy="nullAllowed"
   		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
   		initialValue="0">
   	</d:cachevariable>
@@ -21,10 +16,6 @@
   	<d:configentry dataType="OpcUa_UInt32" name="identifier"
   		storedInDeviceObject="true">
   	</d:configentry>
-  	<d:cachevariable initializeWith="configuration"
-  		dataType="OpcUa_Double" name="refreshRate" nullPolicy="nullAllowed"
-  		addressSpaceWrite="forbidden">
-  	</d:cachevariable>
   	<d:hasobjects instantiateUsing="configuration" class="ADCChannels"></d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="MOPSConfiguration"></d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="MOPSMonitoring"></d:hasobjects>
@@ -49,11 +40,17 @@
   		dataType="OpcUa_Boolean" name="onOffCrate" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
   	</d:cachevariable>
+  	<d:configentry dataType="OpcUa_UInt32" name="identifier"
+  		storedInDeviceObject="true">
+  	</d:configentry>
   </d:class>
   <d:class name="MOMO">
   	<d:devicelogic></d:devicelogic>
   	<d:hasobjects instantiateUsing="configuration" class="TemperatureModule"></d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="CanBusMonitoring"></d:hasobjects>
+  	<d:configentry dataType="OpcUa_UInt32" name="identifier"
+  		storedInDeviceObject="true">
+  	</d:configentry>
   </d:class>
   <d:class name="TemperatureModule">
   	<d:devicelogic></d:devicelogic>
@@ -101,7 +98,14 @@
   		dataType="OpcUa_Boolean" name="controlEnabled" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
   	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_UInt32" name="networkAddresses" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
   	<d:hasobjects instantiateUsing="configuration" class="MOPS"></d:hasobjects>
+  	<d:configentry dataType="OpcUa_UInt32" name="identifier"
+  		storedInDeviceObject="true">
+  	</d:configentry>
   </d:class>
   <d:class name="VoltageModule">
   </d:class>
@@ -265,27 +269,38 @@
   		dataType="OpcUa_Double" name="Ch34" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
   	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Double" name="numberOfEntries" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
 
   </d:class>
   <d:class name="MOPSMonitoring">
   	<d:devicelogic></d:devicelogic>
-  	<d:cachevariable initializeWith="configuration"
-  		dataType="OpcUa_Double" name="BandgapRef" nullPolicy="nullAllowed"
-  		addressSpaceWrite="forbidden">
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="bandGapRef" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialValue="0"
+  		initialStatus="OpcUa_Good">
   	</d:cachevariable>
-  	<d:cachevariable initializeWith="configuration"
+  	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Double" name="VCANSEN" nullPolicy="nullAllowed"
-  		addressSpaceWrite="forbidden">
+  		addressSpaceWrite="regular" initialValue="0"
+  		initialStatus="OpcUa_Good">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="VGNDSEN" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden" initialStatus="OpcUa_Good"
+  		initialValue="0">
   	</d:cachevariable>
   	<d:cachevariable initializeWith="configuration"
-  		dataType="OpcUa_Double" name="VGNDSEN" nullPolicy="nullAllowed"
+  		dataType="OpcUa_Double" name="numberOfEntries" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
   	</d:cachevariable>
   </d:class>
   <d:class name="MOPSConfiguration">
   	<d:devicelogic></d:devicelogic>
   	<d:cachevariable initializeWith="configuration"
-  		dataType="OpcUa_Double" name="Read_FE_monitoring_values" nullPolicy="nullAllowed"
+  		dataType="OpcUa_Double" name="readFEMonitoringValues" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
   	</d:cachevariable>
   </d:class>
