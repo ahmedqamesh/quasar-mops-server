@@ -10,11 +10,13 @@
 					identifier="1">
 					<MOPS name="MOPS1" identifier="1">
 						<ADCChannels name="ADCChannels" Ch34="0.0"
-							Ch33="0.0" Ch4="0.0" Ch3="0.0" numberOfEntries="15">
+							Ch33="0.0" Ch4="0.0" Ch3="0.0">
 						</ADCChannels>
 						<MOPSConfiguration name="MOPSConfiguration" readFEMonitoringValues="12">
 						</MOPSConfiguration>
-						<MOPSMonitoring name="MOPSMonitoring" numberOfEntries="0.0"></MOPSMonitoring>
+						<MOPSMonitoring name="MOPSMonitoring" numberOfEntries="0.0">
+							<CalculatedVariable name="PCANSEN" value="1*1000/DetectorServices.Y3523X0.Crate1.CAN1.MOPS1.MOPSMonitoring.VCANSEN" ></CalculatedVariable>
+						</MOPSMonitoring>
 					</MOPS>
 				</CanBus>
 				<MOMO name="MOMO1" identifier="1"></MOMO>

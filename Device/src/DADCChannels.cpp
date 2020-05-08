@@ -81,6 +81,7 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
   void DADCChannels::update(){
+	  //send data from server to client
 	getAddressSpaceLink()->setCh4(rand(), OpcUa_Good);
 	getAddressSpaceLink()->setCh5(rand(), OpcUa_Good);
 	getAddressSpaceLink()->setCh6(rand(), OpcUa_Good);
@@ -112,6 +113,11 @@ namespace Device
 	getAddressSpaceLink()->setCh22(rand(), OpcUa_Good);
 	getAddressSpaceLink()->setCh23(rand(), OpcUa_Good);
 	getAddressSpaceLink()->setCh24(rand(), OpcUa_Good);
+
+
+	// send data from client to server
+	OpcUa_Double entries = getAddressSpaceLink()->getNumberOfEntries();
+	LOG(Log::INF)<<"ADC channels, NumberOfEntries ="<< entries;
   }
 
 

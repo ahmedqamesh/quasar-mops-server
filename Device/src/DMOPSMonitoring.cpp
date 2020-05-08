@@ -83,8 +83,8 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
   void DMOPSMonitoring::update(){
-	getAddressSpaceLink()->setbandGapRef(rand(), OpcUa_Good);
-	getAddressSpaceLink()->setVCANSEN(rand(), OpcUa_Good);
+	getAddressSpaceLink()->setBandGapRef(rand(), OpcUa_Good);
+	getAddressSpaceLink()->setVCANSEN(500+rand()%20, OpcUa_Good);
 	getAddressSpaceLink()->setVGNDSEN(rand(), OpcUa_Good);
   }
 

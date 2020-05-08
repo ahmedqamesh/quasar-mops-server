@@ -17,8 +17,8 @@
   		storedInDeviceObject="true">
   	</d:configentry>
   	<d:hasobjects instantiateUsing="configuration" class="ADCChannels"></d:hasobjects>
-  	<d:hasobjects instantiateUsing="configuration" class="MOPSConfiguration"></d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="MOPSMonitoring"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="MOPSConfiguration"></d:hasobjects>
   </d:class>
   <d:class name="PP3Location">
   	<d:devicelogic></d:devicelogic>
@@ -269,9 +269,10 @@
   		dataType="OpcUa_Double" name="Ch34" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
   	</d:cachevariable>
-  	<d:cachevariable initializeWith="configuration"
-  		dataType="OpcUa_Double" name="numberOfEntries" nullPolicy="nullAllowed"
-  		addressSpaceWrite="forbidden">
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="numberOfEntries"
+  		nullPolicy="nullForbidden" addressSpaceWrite="regular"
+  		initialValue="0.0" initialStatus="OpcUa_Good">
   	</d:cachevariable>
 
   </d:class>
