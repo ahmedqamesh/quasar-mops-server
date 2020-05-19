@@ -2,7 +2,9 @@
 <d:design projectShortName="" xmlns:d="http://cern.ch/quasar/Design" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cern.ch/quasar/Design Design.xsd ">
   <d:class name="DcsMoPSControlServer">
   	<d:devicelogic></d:devicelogic>
-  	<d:hasobjects instantiateUsing="configuration" class="PP3Location"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="PP3Location"
+  		maxOccurs="4" minOccurs="0">
+  	</d:hasobjects>
   </d:class>
   <d:class name="MOPS">
   	<d:devicelogic></d:devicelogic>
@@ -13,21 +15,35 @@
   	</d:cachevariable>
 
 
-  	<d:configentry dataType="OpcUa_UInt32" name="identifier"
+  	<d:cachevariable initializeWith="configuration" dataType="OpcUa_Double" name="NodeId" nullPolicy="nullAllowed" addressSpaceWrite="regular">
+  	</d:cachevariable><d:configentry dataType="OpcUa_UInt32" name="identifier"
   		storedInDeviceObject="true">
+  		<d:configRestriction>
+  			<d:restrictionByBounds minInclusive="0"
+  				maxInclusive="4" /></d:configRestriction>
   	</d:configentry>
   	<d:hasobjects instantiateUsing="configuration" class="ADCChannels"></d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="MOPSMonitoring"></d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="MOPSConfiguration"></d:hasobjects>
+  	
   </d:class>
   <d:class name="PP3Location">
   	<d:devicelogic></d:devicelogic>
-  	<d:hasobjects instantiateUsing="configuration" class="MOPSHUBCrate"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration"
+  		class="MOPSHUBCrate" maxOccurs="7" minOccurs="0">
+  	</d:hasobjects>
+  	<d:configentry dataType="UaString" name="address"
+  		storedInDeviceObject="true">
+  	</d:configentry>
   </d:class>
   <d:class name="MOPSHUBCrate">
   	<d:devicelogic></d:devicelogic>
-  	<d:hasobjects instantiateUsing="configuration" class="MOMO"></d:hasobjects>
-  	<d:hasobjects instantiateUsing="configuration" class="CanBus"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="MOMO"
+  		maxOccurs="1" minOccurs="1">
+  	</d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="CanBus"
+  		maxOccurs="30" minOccurs="0">
+  	</d:hasobjects>
   	<d:cachevariable initializeWith="configuration"
   		dataType="OpcUa_Int32" name="id" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
@@ -42,15 +58,23 @@
   	</d:cachevariable>
   	<d:configentry dataType="OpcUa_UInt32" name="identifier"
   		storedInDeviceObject="true">
+  		<d:configRestriction>
+  			<d:restrictionByBounds minInclusive="0"
+  				maxInclusive="7" /></d:configRestriction>
   	</d:configentry>
   </d:class>
   <d:class name="MOMO">
   	<d:devicelogic></d:devicelogic>
-  	<d:hasobjects instantiateUsing="configuration" class="TemperatureModule"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration"
+  		class="TemperatureModule" maxOccurs="1">
+  	</d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="CanBusMonitoring"></d:hasobjects>
   	<d:configentry dataType="OpcUa_UInt32" name="identifier"
   		storedInDeviceObject="true">
   	</d:configentry>
+  	<d:hasobjects instantiateUsing="configuration" class="MOPS"
+  		maxOccurs="2">
+  	</d:hasobjects>
   </d:class>
   <d:class name="TemperatureModule">
   	<d:devicelogic></d:devicelogic>
@@ -101,11 +125,18 @@
   	<d:cachevariable initializeWith="configuration"
   		dataType="OpcUa_UInt32" name="networkAddresses" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
+  	</d:cachevariable><d:cachevariable initializeWith="configuration" dataType="OpcUa_Double" name="ConnectedMOPSs" nullPolicy="nullAllowed" addressSpaceWrite="regular">
   	</d:cachevariable>
-  	<d:hasobjects instantiateUsing="configuration" class="MOPS"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="MOPS"
+  		maxOccurs="4" minOccurs="0">
+  	</d:hasobjects>
   	<d:configentry dataType="OpcUa_UInt32" name="identifier"
   		storedInDeviceObject="true">
+  		<d:configRestriction>
+  			<d:restrictionByBounds minInclusive="0"
+  				maxInclusive="32" /></d:configRestriction>
   	</d:configentry>
+  	
   </d:class>
   <d:class name="VoltageModule">
   </d:class>
