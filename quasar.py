@@ -77,7 +77,7 @@ else:
         args = args[len(matched_command[0]):]
         callee = matched_command[1]
         # TODO throw WrongArguments here if not enough args
-        if 'context' in inspect.getargspec(callee).args:
+        if 'context' in inspect.getfullargspec(callee).args:
             callee( makeContext(), *args )  # pack arguments after the last chunk of the command
         else:
             callee( *args )

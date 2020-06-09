@@ -26,6 +26,7 @@ SUBDIRS := \
 AddressSpace/src \
 CalculatedVariables/ext_components/muparser-amalgamated/src \
 CalculatedVariables/src \
+CanLibrary/src \
 Common/src \
 Device/src \
 LogIt/src \

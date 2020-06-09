@@ -32,6 +32,7 @@
 #include <DPP3Location.h>
 #include <DMOPSHUBCrate.h>
 #include <DCanBus.h>
+#include "CanWrapper.h"
 QuasarServer::QuasarServer() : BaseQuasarServer()
 {
 
@@ -64,7 +65,6 @@ void QuasarServer::mainLoop()
 void QuasarServer::initialize()
 {
     LOG(Log::INF) << "Initializing Quasar server.";
-
 }
 
 void QuasarServer::shutdown()

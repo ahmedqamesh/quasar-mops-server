@@ -12,11 +12,7 @@
   		dataType="UaString" name="location" nullPolicy="nullAllowed"
   		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
   		initialValue="0">
-  	</d:cachevariable>
-
-
-  	<d:cachevariable initializeWith="configuration" dataType="OpcUa_Double" name="NodeId" nullPolicy="nullAllowed" addressSpaceWrite="regular">
-  	</d:cachevariable><d:configentry dataType="OpcUa_UInt32" name="identifier"
+  	</d:cachevariable><d:configentry dataType="OpcUa_UInt32" name="nodeId"
   		storedInDeviceObject="true">
   		<d:configRestriction>
   			<d:restrictionByBounds minInclusive="0"
@@ -107,10 +103,6 @@
   		addressSpaceWrite="forbidden">
   	</d:cachevariable>
   	<d:cachevariable initializeWith="configuration"
-  		dataType="UaString" name="port" nullPolicy="nullAllowed"
-  		addressSpaceWrite="forbidden">
-  	</d:cachevariable>
-  	<d:cachevariable initializeWith="configuration"
   		dataType="UaString" name="type" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
   	</d:cachevariable>
@@ -130,7 +122,7 @@
   	<d:hasobjects instantiateUsing="configuration" class="MOPS"
   		maxOccurs="4" minOccurs="0">
   	</d:hasobjects>
-  	<d:configentry dataType="OpcUa_UInt32" name="identifier"
+  	<d:configentry dataType="OpcUa_UInt32" name="port"
   		storedInDeviceObject="true">
   		<d:configRestriction>
   			<d:restrictionByBounds minInclusive="0"

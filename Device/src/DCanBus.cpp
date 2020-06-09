@@ -27,11 +27,13 @@
 #include <DCanBus.h>
 #include <ASCanBus.h>
 
-
 #include <DMOPS.h>
-
-
-
+#include <string>
+#include <iostream>
+using namespace std;
+#include "CanWrapper.h"
+#include "CanWorkerThread.h"
+#include <linux/can.h>
 
 namespace Device
 {
@@ -66,7 +68,8 @@ namespace Device
     /* fill up constructor initialization list here */
   {
     /* fill up constructor body here */
-	  LOG(Log::INF)<<"Bus ID="<< config.identifier();
+	  //LOG(Log::INF)<<"Bus ID="<< config.identifier();
+	  LOG(Log::INF)<<"port number="<< config.port();
   }
 
   /* sample dtr */
@@ -83,7 +86,26 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
   void DCanBus::update(){
+	 //open canport
+	struct can_frame frame;
+	int errorCode;
+	bool extended ;
+	extended = false;
+	bool rtr;
+	frame.can_dlc = 8; // Set data length
+	frame.can_id = 0x601; // Set id
+	// Set data elements
+	frame.data[0] = 64;
+	frame.data[1] = 0;
+	frame.data[2] = 16;
+	frame.data[3] = 0;
+	frame.data[4] = 0;
+	frame.data[5] = 0;
+	CanLibrary::CanWrapper::openPort("can"+port(), errorCode);
+	CanLibrary::CanWrapper::sendMsg(frame, extended, rtr, errorCode);
+	 //LOG(Log::INF)<<"port number="<< port();
   	for (DMOPS* mops : mopss())
+
   		mops->update();
   }
 

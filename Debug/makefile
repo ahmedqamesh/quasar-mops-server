@@ -39,6 +39,7 @@ RM := rm -rf
 -include LogIt/src/subdir.mk
 -include Device/src/subdir.mk
 -include Common/src/subdir.mk
+-include CanLibrary/src/subdir.mk
 -include CalculatedVariables/src/subdir.mk
 -include CalculatedVariables/ext_components/muparser-amalgamated/src/subdir.mk
 -include AddressSpace/src/subdir.mk

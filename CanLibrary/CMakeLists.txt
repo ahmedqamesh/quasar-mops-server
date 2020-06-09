@@ -1,0 +1,1 @@
+add_library(CanLibrary OBJECT src/CanWrapper.cpp src/CanWorkerThread.cpp)

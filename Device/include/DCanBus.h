@@ -39,7 +39,6 @@
 
 #include <Base_DCanBus.h>
 
-
 namespace Device
 {
 
@@ -70,7 +69,6 @@ namespace Device
     /* Delete copy constructor and assignment operator */
       DCanBus (const DCanBus &);
       DCanBus & operator= (const DCanBus & other);
-
     // ----------------------------------------------------------------------- *
     // -     CUSTOM CODE STARTS BELOW THIS COMMENT.                            *
     // -     Don't change this comment, otherwise merge tool may be troubled.  *

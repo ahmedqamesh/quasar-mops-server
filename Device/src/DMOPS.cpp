@@ -29,8 +29,8 @@
 #include <DADCChannels.h>
 #include <DMOPSMonitoring.h>
 #include <DMOPSConfiguration.h>
-
-
+#include "CanWrapper.h"
+#include "CanWorkerThread.h"
 
 namespace Device
 {
@@ -65,7 +65,7 @@ namespace Device
     /* fill up constructor initialization list here */
   {
     /* fill up constructor body here */
-	LOG(Log::INF)<<"MOPS ID="<< config.identifier();
+	LOG(Log::INF)<<"MOPS ID="<< config.nodeId();
   }
 
   /* sample dtr */
@@ -82,9 +82,11 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
 
+
 void DMOPS::update()
   {
-	LOG(Log::INF)<<"MOPS ID="<< identifier();
+	LOG(Log::INF)<<"MOPS ID="<< nodeId();
+	// LOG(Log::INF) << "CAN Version : "<<CanLibrary::CanWrapper::getLibraryVersion();
 	for (DADCChannels* adc : adcchannelss())
 		adc->update();
 	for (DMOPSConfiguration* config : mopsconfigurations())

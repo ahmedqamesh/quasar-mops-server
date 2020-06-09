@@ -3,35 +3,15 @@
 	
 	<DcsMoPSControlServer name="DetectorServices">
 		<PP3Location name="Y3523X0" address="Y3523X0">
-			<MOPSHUBCrate powerOn="true" name="Crate1" onOffCrate="true"
+			<MOPSHUBCrate powerOn="true" name="Crate0" onOffCrate="true"
 				id="1" identifier="1">
-				<CanBus port="1" name="CAN1" listenOnly="true" type=""
-					speed="" controlEnabled="true" networkAddresses="1" identifier="1"
-					ConnectedMOPSs="1">
-					<MOPS name="MOPS1" identifier="1" NodeId="0.0">
-						<ADCChannels name="ADCChannels" Ch34="0.0"
-							Ch33="0.0" Ch4="0.0" Ch3="0.0">
-						</ADCChannels>
-						<MOPSConfiguration name="Regs"
-							readFEMonitoringValues="12">
-						</MOPSConfiguration>
-						<MOPSMonitoring name="MonitoringData"
-							numberOfEntries="0.0">
-							<CalculatedVariable name="PCANSEN"
-								value="DetectorServices.Y3523X0.Crate1.CAN1.MOPS1.MonitoringData.VCANSEN*1000" />
-						</MOPSMonitoring>
-					</MOPS>
+				<MOMO name="MOMO1" identifier="1"></MOMO>
+				<CanBus port="0" name="Can0" listenOnly="true" type=""
+					speed="" controlEnabled="true" ConnectedMOPSs="0.0"
+					networkAddresses="0">
+					<MOPS name="MOPS1" nodeId="1"></MOPS>
 				</CanBus>
-				<MOMO name="MOMO1" identifier="1">
-					<MOPS name="MOPS11" identifier="0" NodeId="0.0"></MOPS>
-					<MOPS name="MOPS12" identifier="0" NodeId="0.0"></MOPS></MOMO>
 			</MOPSHUBCrate>
-		</PP3Location>
-		<PP3Location name="Y3423X0" address="Y3423X0"></PP3Location>
-		<PP3Location name="Y3423X8" address="Y3423X0"></PP3Location>
-		<PP3Location name="Y5904X7" address="Y5904X7"></PP3Location></DcsMoPSControlServer>
-	<DcsMoPSControlServer name="Optobox">
-		<PP3Location name="Y3523X4" address="Y3523X4"></PP3Location>
-		<PP3Location name="Y3003X4" address="Y3003X4"></PP3Location></DcsMoPSControlServer>
+		</PP3Location></DcsMoPSControlServer>
 	
 </configuration>
