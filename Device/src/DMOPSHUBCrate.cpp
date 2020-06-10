@@ -88,10 +88,11 @@ namespace Device
 
   void DMOPSHUBCrate::update(){
   	for (DCanBus* canbus : canbuss())
-  		canbus->update();
+  		canbus->updateCanBus();
+
 
   	for (DMOMO* momo : momos())
-  		momo->update();
+  		momo->updateMOMO();
   }
 
 

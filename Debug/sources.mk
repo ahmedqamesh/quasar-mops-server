@@ -39,10 +39,10 @@ build/CMakeFiles/3.16.1/CompilerIdCXX \
 build/CMakeFiles \
 build/CalculatedVariables/CMakeFiles/CalculatedVariables.dir/ext_components/muparser-amalgamated/src \
 build/CalculatedVariables/CMakeFiles/CalculatedVariables.dir/src \
+build/CanLibrary/CMakeFiles/CanLibrary.dir/src \
 build/Common/CMakeFiles/Common.dir/src \
 build/Configuration/CMakeFiles/Configuration.dir \
 build/Configuration \
-build/Device/CMakeFiles/Device.dir/generated \
 build/Device/CMakeFiles/Device.dir/src \
 build/Device/generated \
 build/Device/src \
@@ -58,4 +58,5 @@ build/open62541-compat/extern/open62541/src \
 build/open62541-compat/src \
 build/open62541-compat/src/uaclient \
 build/open62541-compat/test/src \
+build/Device/CMakeFiles/Device.dir/generated \
 

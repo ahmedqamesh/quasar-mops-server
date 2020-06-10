@@ -82,7 +82,7 @@ namespace Device
   // 3     Below you put bodies for custom methods defined for this class.   3
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
-  void DMOPSConfiguration::update(){
+  void DMOPSConfiguration::updateMopsConfiguration(int cobid, int dlc, bool extended, bool rtr_frame,int &errorCode,bool &error, struct timeval timeout){
 	getAddressSpaceLink()->setReadFEMonitoringValues(rand(), OpcUa_Good);
   }
 

@@ -25,17 +25,13 @@
 #include <sys/time.h>
 #include <sys/select.h>
 #include "CanWrapper.h"
-
 #define INVALID_SOCKET -1
-#define INITIALIZE_SOCKET-1
 namespace CanLibrary {
-std::string CanWrapper::getLibraryVersion() {
-	return "Socketcan";
-}
-
+static bool m_initialized; // indicates if socket is initialized
+static int m_socket ;     // Socket
 CanWrapper::CanWrapper() {
-	//bool m_initialized = false;
-	//int m_socket = INVALID_SOCKET;
+	m_initialized = false;
+	m_socket = INVALID_SOCKET;
 }
 // Initialize socket. Returns false if socket could not be opened.
 // Parameters:
@@ -44,13 +40,10 @@ CanWrapper::CanWrapper() {
 bool CanWrapper::openPort(const char *interfaceName, int &errorCode) {
 	struct sockaddr_can addr;
 	struct ifreq ifr;
-	int m_socket = INVALID_SOCKET;
-	bool m_initialized = INITIALIZE_SOCKET;
 	int ret;
 
 	errorCode = 0;
-	printf(
-			"Opening an empty socket API socket with PF_CAN as the protocol family\n");
+	//printf("Opening an empty socket API socket with PF_CAN as the protocol family\n");
 	m_socket = socket(PF_CAN, SOCK_RAW, CAN_RAW);
 
 	// Get index for a certain name
@@ -58,10 +51,9 @@ bool CanWrapper::openPort(const char *interfaceName, int &errorCode) {
 	ret = ioctl(m_socket, SIOCGIFINDEX, &ifr);
 	if (ret) {
 		errorCode = errno;
-
 		return false;
 	}
-	printf("binding the socket %s to all CAN interfaces\n", interfaceName);
+	//printf("Binding the socket %s to all CAN interfaces\n", interfaceName);
 	addr.can_family = AF_CAN;
 	addr.can_ifindex = ifr.ifr_ifindex;
 
@@ -84,7 +76,7 @@ bool CanWrapper::openPort(const char *interfaceName, int &errorCode) {
 void CanWrapper::closePort() {
 	printf("Closing the connection \n");
 	int m_socket = INVALID_SOCKET;
-	bool m_initialized = INITIALIZE_SOCKET;
+	//bool m_initialized = INITIALIZE_SOCKET;
 	if (m_initialized) {
 		// We don't want to read or write anything more
 		shutdown(m_socket, SHUT_RDWR);
@@ -107,30 +99,39 @@ void CanWrapper::closePort() {
 //#define ENETDOWN        100     /* Network is down - use ifconfig up to start */
 //#define EAGAIN          11      /* Try again - buffer is full */
 //#define EBADF            9      /* Bad file number - can net not opened */
-bool CanWrapper::sendMsg(struct can_frame msg, bool extended, bool rtr, int &errorCode) {
-	bool m_initialized = INITIALIZE_SOCKET;
-	int m_socket = INVALID_SOCKET;
-	printf("Writing CAN frames.... \n");
+bool CanWrapper::writeCanMessage(int cobid, int msg [], int dlc, bool extended, bool rtr_frame,
+		int &errorCode) {
+	//printf("Writing CAN frames.... \n");
+	struct can_frame frame;
+	frame.can_dlc = dlc; // Set data length
+	frame.can_id = cobid; // Set id
+	//struct ifreq ifr;
+	// Set data elements
+	frame.data[0] = msg[0];
+	frame.data[1] = msg[1];
+	frame.data[2] = msg[2];
+	frame.data[3] = msg[3];
+	frame.data[4] = msg[4];
+	frame.data[5] = msg[5];
 	int retval;
-	struct ifreq ifr;
 	errorCode = 0;
 
 	if (!m_initialized)
 		return false;
 
 	if (extended) {
-		msg.can_id |= CAN_EFF_FLAG;
+		frame.can_id |= CAN_EFF_FLAG;
 	}
 
-	if (rtr) {
-		msg.can_id |= CAN_RTR_FLAG;
+	if (rtr_frame) {
+		frame.can_id |= CAN_RTR_FLAG;
 	}
-	printf("Received a CAN frame from interface %s\n", ifr.ifr_name);
-	retval = write(m_socket, &msg, sizeof(struct can_frame));
+	//printf("Received a CAN frame from interface %s\n", ifr.ifr_name);
+	retval = write(m_socket, &frame, sizeof(struct can_frame));
 
 	if (retval < 0) {
-//        perror("could not send");
-//        printf("errno is %d\r\n", errno);
+		//perror("could not send");
+		//printf("errno is %d\r\n", errno);
 		errorCode = errno;
 
 		return false;
@@ -151,14 +152,13 @@ bool CanWrapper::sendMsg(struct can_frame msg, bool extended, bool rtr, int &err
 //#define EAGAIN          11      /* Try again - no data available*/
 //#define EBADF            9      /* Bad file number - can net not opened */
 // timeout - GetMsg will return false after timeout period
-bool CanWrapper::getMsg(struct can_frame &frame, bool &extended, bool &rtr,
-		bool &error, int &errorCode, struct timeval timeout) {
-	printf("Reading CAN frames.... \n");
+bool CanWrapper::readCanMessages(bool &extended, bool &rtr_frame, bool &messageValid,
+		int &errorCode, struct timeval timeout) {
+	//printf("Reading CAN frames.... \n");
+	struct can_frame frame;
 	int bytesRead;
 	int ret;
 	fd_set rfds;
-	bool m_initialized = INITIALIZE_SOCKET;
-	int m_socket = INVALID_SOCKET;
 	errorCode = 0;
 
 	if (!m_initialized) {
@@ -179,29 +179,45 @@ bool CanWrapper::getMsg(struct can_frame &frame, bool &extended, bool &rtr,
 
 	if (ret > 0) {
 		bytesRead = read(m_socket, &frame, sizeof(frame));
-
 		if (bytesRead < 0) {
 			errorCode = errno;
-
 			return false;
 		}
 
 		if (bytesRead == sizeof(frame)) {
 			error = frame.can_id & CAN_ERR_FLAG;
-
 			extended = frame.can_id & CAN_EFF_FLAG;
-
-			rtr = frame.can_id & CAN_RTR_FLAG;
-			if (error) {
+			rtr_frame = frame.can_id & CAN_RTR_FLAG;
+			if (error) { // Error frame
 				frame.can_id &= CAN_ERR_MASK;
-			}
-
-			if (extended) {
+				printf("Error frame received, class = %d\n", frame.can_id);
+			} else if (extended) { // Extended frame
 				frame.can_id &= CAN_EFF_MASK;
-			} else {
+				printf("Extended Frame msg........\n");
+				if (rtr_frame) {
+					printf("RTR ID: %d LENGTH: %d\n", frame.can_id,
+							frame.can_dlc);
+				} else {
+					printf("ID: %d LENGTH: %d  DATA:\n", frame.can_id,
+							frame.can_dlc);
+					for (int i = 0; i <= frame.can_dlc; i++) {
+						printf(" DATA[%i]:%i\n", i, frame.data[i]);
+					}
+				}
+			} else { // Standard frame
 				frame.can_id &= CAN_SFF_MASK;
+				printf("Standard Frame msg........\n");
+				if (rtr_frame) {
+					printf("RTR ID: %d LENGTH: %d\n", frame.can_id,
+							frame.can_dlc);
+				} else {
+					printf("ID: %d LENGTH: %d  DATA:\n", frame.can_id,
+							frame.can_dlc);
+					for (int i = 0; i <= frame.can_dlc; i++) {
+						printf(" DATA[%i]:%i\n", i, frame.data[i]);
+					}
+				}
 			}
-
 			return true;
 		}
 	}

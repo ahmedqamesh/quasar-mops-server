@@ -12,7 +12,13 @@
   		dataType="UaString" name="location" nullPolicy="nullAllowed"
   		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
   		initialValue="0">
-  	</d:cachevariable><d:configentry dataType="OpcUa_UInt32" name="nodeId"
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="portNumber" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
+  		initialValue="0">
+  	</d:cachevariable>
+  	<d:configentry dataType="OpcUa_UInt32" name="nodeId"
   		storedInDeviceObject="true">
   		<d:configRestriction>
   			<d:restrictionByBounds minInclusive="0"
@@ -21,7 +27,7 @@
   	<d:hasobjects instantiateUsing="configuration" class="ADCChannels"></d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="MOPSMonitoring"></d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="MOPSConfiguration"></d:hasobjects>
-  	
+
   </d:class>
   <d:class name="PP3Location">
   	<d:devicelogic></d:devicelogic>

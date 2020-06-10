@@ -75,7 +75,7 @@ namespace Device
     // ----------------------------------------------------------------------- *
 
   public:
-      void update();
+      void updateCanBus();
   private:
 
 

@@ -26,15 +26,13 @@
 
 #include <DCanBus.h>
 #include <ASCanBus.h>
-
+#include <typeinfo>
 #include <DMOPS.h>
 #include <string>
 #include <iostream>
+#include <sstream>
 using namespace std;
 #include "CanWrapper.h"
-#include "CanWorkerThread.h"
-#include <linux/can.h>
-
 namespace Device
 {
 
@@ -68,8 +66,7 @@ namespace Device
     /* fill up constructor initialization list here */
   {
     /* fill up constructor body here */
-	  //LOG(Log::INF)<<"Bus ID="<< config.identifier();
-	  LOG(Log::INF)<<"port number="<< config.port();
+	    LOG(Log::INF)<<"port number="<< config.port();
   }
 
   /* sample dtr */
@@ -85,30 +82,17 @@ namespace Device
   // 3     Below you put bodies for custom methods defined for this class.   3
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
-  void DCanBus::update(){
-	 //open canport
-	struct can_frame frame;
+  void DCanBus::updateCanBus(){
+	//define variables for the CAN channel
+	int portNumber;
+	portNumber = port();
 	int errorCode;
-	bool extended ;
-	extended = false;
-	bool rtr;
-	frame.can_dlc = 8; // Set data length
-	frame.can_id = 0x601; // Set id
-	// Set data elements
-	frame.data[0] = 64;
-	frame.data[1] = 0;
-	frame.data[2] = 16;
-	frame.data[3] = 0;
-	frame.data[4] = 0;
-	frame.data[5] = 0;
-	CanLibrary::CanWrapper::openPort("can"+port(), errorCode);
-	CanLibrary::CanWrapper::sendMsg(frame, extended, rtr, errorCode);
-	 //LOG(Log::INF)<<"port number="<< port();
+	string can = "can";
+	string canport;
+	canport = can+to_string(portNumber);
+	//open CAN port [Binding the socket can0 to all CAN interfaces]
+	CanLibrary::CanWrapper::openPort(canport.c_str() , errorCode);
   	for (DMOPS* mops : mopss())
-
-  		mops->update();
+  		mops->updateMOPS(portNumber);
   }
-
-
-
 }

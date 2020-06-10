@@ -26,7 +26,7 @@
 
 #include <DADCChannels.h>
 #include <ASADCChannels.h>
-
+#include "CanWrapper.h"
 
 
 
@@ -80,8 +80,22 @@ namespace Device
   // 3     Below you put bodies for custom methods defined for this class.   3
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
-  void DADCChannels::update(){
-	  //send data from server to client
+  void DADCChannels::updateAdcChannels(int cobid, int dlc, bool extended, bool rtr_frame,int &errorCode,bool &messageValid, struct timeval timeout){
+	// Send CAN message on socket CAN [Writing CAN frames....]
+		//Set data elements
+	    int index = 0x1000;
+	    int  subindex,Byte0, Byte1, Byte2, Byte3;
+	    Byte0 = 0x40;
+	    Byte1 = static_cast<unsigned char>((index & 0x00FF));
+		Byte2 = static_cast<unsigned char>(((index & 0xFF00) >> 8));
+		Byte3 = subindex = 0;
+		int msg[] = {Byte0,Byte1,Byte2,Byte3,0,0};
+		//int msg[] = {64,0,16,0,0,0};
+	//LOG(Log::INF)<<"cobid ="<< cobid;
+	CanLibrary::CanWrapper::writeCanMessage(cobid,msg,dlc, extended, rtr_frame, errorCode);
+	//Receive CAN messages [Reading CAN frames....]
+	CanLibrary::CanWrapper::readCanMessages(extended, rtr_frame, messageValid, errorCode, timeout);
+	//send data from server to client
 	getAddressSpaceLink()->setCh4(rand(), OpcUa_Good);
 	getAddressSpaceLink()->setCh5(rand(), OpcUa_Good);
 	getAddressSpaceLink()->setCh6(rand(), OpcUa_Good);
@@ -116,8 +130,8 @@ namespace Device
 
 
 	// send data from client to server
-	OpcUa_Double entries = getAddressSpaceLink()->getNumberOfEntries();
-	LOG(Log::INF)<<"ADC channels, NumberOfEntries ="<< entries;
+	//OpcUa_Double entries = getAddressSpaceLink()->getNumberOfEntries();
+	//LOG(Log::INF)<<"ADC channels, NumberOfEntries ="<< entries;
   }
 
 

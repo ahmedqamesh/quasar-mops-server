@@ -77,7 +77,7 @@ namespace Device
     // ----------------------------------------------------------------------- *
 
   public:
-      void update();
+      void updateMOMO();
   private:
 
 

@@ -30,8 +30,6 @@
 #include <DMOPSMonitoring.h>
 #include <DMOPSConfiguration.h>
 #include "CanWrapper.h"
-#include "CanWorkerThread.h"
-
 namespace Device
 {
 
@@ -65,7 +63,7 @@ namespace Device
     /* fill up constructor initialization list here */
   {
     /* fill up constructor body here */
-	LOG(Log::INF)<<"MOPS ID="<< config.nodeId();
+	//LOG(Log::INF)<<"MOPS ID="<< config.nodeId();
   }
 
   /* sample dtr */
@@ -83,18 +81,31 @@ namespace Device
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
 
 
-void DMOPS::update()
+void DMOPS::updateMOPS(const double portNumber)
   {
-	LOG(Log::INF)<<"MOPS ID="<< nodeId();
-	// LOG(Log::INF) << "CAN Version : "<<CanLibrary::CanWrapper::getLibraryVersion();
+	// Set port number
+	getAddressSpaceLink()->setPortNumber(portNumber,OpcUa_Good);
+	//LOG(Log::INF)<<"MOPS ID="<< nodeId();
+
+	bool extended ;
+  	int errorCode;
+	extended = false;
+	bool rtr_frame = false;
+	//set node Id
+	int SDO_RX = 0x600;
+	int cobid = SDO_RX+nodeId();// Set id
+	//Set data elements
+	int dlc = 8;// Set data length
+	struct timeval tv;
+	bool error;
+	tv.tv_sec = 1;
+	tv.tv_usec = 0;
+
 	for (DADCChannels* adc : adcchannelss())
-		adc->update();
-	for (DMOPSConfiguration* config : mopsconfigurations())
-		config->update();
-	for (DMOPSMonitoring* monitor : mopsmonitorings())
-		monitor->update();
-
+		adc->updateAdcChannels(cobid,dlc, extended, rtr_frame, errorCode,error, tv);
+	//for (DMOPSConfiguration* config : mopsconfigurations())
+	//	config->updateMopsConfiguration(cobid,dlc, extended, rtr_frame, errorCode,error, tv);
+	//for (DMOPSMonitoring* monitor : mopsmonitorings())
+		//monitor->updateMopsMonitoring(cobid,dlc, extended, rtr_frame, errorCode,error, tv);
   }
-
-
 }

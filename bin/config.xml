@@ -9,7 +9,10 @@
 				<CanBus port="0" name="Can0" listenOnly="true" type=""
 					speed="" controlEnabled="true" ConnectedMOPSs="0.0"
 					networkAddresses="0">
-					<MOPS name="MOPS1" nodeId="1"></MOPS>
+					<MOPS name="MOPS1" nodeId="1">
+						<ADCChannels name="ADCChannels" Ch34="0.0" Ch33="0.0"
+							Ch4="0.0" Ch3="0.0">
+						</ADCChannels></MOPS>
 				</CanBus>
 			</MOPSHUBCrate>
 		</PP3Location></DcsMoPSControlServer>

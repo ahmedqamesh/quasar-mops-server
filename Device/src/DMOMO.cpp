@@ -83,7 +83,7 @@ namespace Device
   // 3     Below you put bodies for custom methods defined for this class.   3
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
-  void DMOMO::update(){
+  void DMOMO::updateMOMO(){
 	  //for (DPP3Location* location : pp3locations())
 	  //location->update();
   }
