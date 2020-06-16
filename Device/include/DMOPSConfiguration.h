@@ -78,7 +78,7 @@ namespace Device
     // ----------------------------------------------------------------------- *
 
   public:
-      void updateMopsConfiguration(int cobid, int dlc, bool extended, bool rtr_frame,int &errorCode,bool &error, struct timeval timeout);
+      void updateMopsConfiguration(int nodeId,struct timeval timeout, int dlc);
   private:
 
 

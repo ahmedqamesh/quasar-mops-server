@@ -77,7 +77,7 @@ namespace Device
     // ----------------------------------------------------------------------- *
 
   public:
-      void updateAdcChannels(int cobid, int dlc, bool extended, bool rtr_frame,int &errorCode,bool &messageValid, struct timeval timeout);
+      void updateAdcChannels(int nodeId,struct timeval timeout, int dlc);
   private:
 
 

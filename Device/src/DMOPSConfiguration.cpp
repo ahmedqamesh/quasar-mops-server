@@ -26,7 +26,7 @@
 
 #include <DMOPSConfiguration.h>
 #include <ASMOPSConfiguration.h>
-
+#include "CanWrapper.h"
 
 
 
@@ -82,8 +82,14 @@ namespace Device
   // 3     Below you put bodies for custom methods defined for this class.   3
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
-  void DMOPSConfiguration::updateMopsConfiguration(int cobid, int dlc, bool extended, bool rtr_frame,int &errorCode,bool &error, struct timeval timeout){
-	getAddressSpaceLink()->setReadFEMonitoringValues(rand(), OpcUa_Good);
+  void DMOPSConfiguration::updateMopsConfiguration(int nodeId, struct timeval timeout, int dlc){
+		bool adctrimmingBits = false;
+		adctrimmingBits = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2001, 0, timeout, dlc);
+		if (adctrimmingBits) {
+			int adctrimmingBits_value = CanLibrary::CanWrapper::getSdoData();
+			getAddressSpaceLink()->setADCtrimmingBits(adctrimmingBits_value, OpcUa_Good);
+		}
+	  getAddressSpaceLink()->setReadFEMonitoringValues(rand(), OpcUa_Good);
   }
 
 }

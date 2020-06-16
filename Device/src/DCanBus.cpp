@@ -92,7 +92,7 @@ namespace Device
 	canport = can+to_string(portNumber);
 	//open CAN port [Binding the socket can0 to all CAN interfaces]
 	CanLibrary::CanWrapper::openPort(canport.c_str() , errorCode);
-  	for (DMOPS* mops : mopss())
+	for (DMOPS* mops : mopss())
   		mops->updateMOPS(portNumber);
   }
 }

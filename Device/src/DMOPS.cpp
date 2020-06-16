@@ -86,26 +86,15 @@ void DMOPS::updateMOPS(const double portNumber)
 	// Set port number
 	getAddressSpaceLink()->setPortNumber(portNumber,OpcUa_Good);
 	//LOG(Log::INF)<<"MOPS ID="<< nodeId();
-
-	bool extended ;
-  	int errorCode;
-	extended = false;
-	bool rtr_frame = false;
-	//set node Id
-	int SDO_RX = 0x600;
-	int cobid = SDO_RX+nodeId();// Set id
-	//Set data elements
-	int dlc = 8;// Set data length
-	struct timeval tv;
-	bool error;
-	tv.tv_sec = 1;
-	tv.tv_usec = 0;
+	int nodeId =1;
+    struct timeval timeout;
+    int dlc = 8;// Set data length
 
 	for (DADCChannels* adc : adcchannelss())
-		adc->updateAdcChannels(cobid,dlc, extended, rtr_frame, errorCode,error, tv);
-	//for (DMOPSConfiguration* config : mopsconfigurations())
-	//	config->updateMopsConfiguration(cobid,dlc, extended, rtr_frame, errorCode,error, tv);
-	//for (DMOPSMonitoring* monitor : mopsmonitorings())
-		//monitor->updateMopsMonitoring(cobid,dlc, extended, rtr_frame, errorCode,error, tv);
+		adc->updateAdcChannels(nodeId,timeout,dlc);
+	for (DMOPSConfiguration* config : mopsconfigurations())
+		config->updateMopsConfiguration(nodeId,timeout,dlc);
+	for (DMOPSMonitoring* monitor : mopsmonitorings())
+		monitor->updateMopsMonitoring(nodeId,timeout,dlc);
   }
 }

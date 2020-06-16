@@ -51,7 +51,7 @@ void QuasarServer::mainLoop()
 
     while(ShutDownFlag() == 0)
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         //you can put some codec here (qamesh)
         //get instance of Device root (the parent of the diagram)
         // the child of root will have a method called mopss (will return a vector and we will iterate over it )
