@@ -4,15 +4,12 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../CanLibrary/src/CanWorkerThread.cpp \
 ../CanLibrary/src/CanWrapper.cpp 
 
 OBJS += \
-./CanLibrary/src/CanWorkerThread.o \
 ./CanLibrary/src/CanWrapper.o 
 
 CPP_DEPS += \
-./CanLibrary/src/CanWorkerThread.d \
 ./CanLibrary/src/CanWrapper.d 
 
 

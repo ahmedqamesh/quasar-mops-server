@@ -34,6 +34,7 @@
 #include <iomanip>
 #include <sstream>
 #include <string>
+#include <LogIt.h>
 #define INVALID_SOCKET -1
 namespace CanLibrary {
 bool m_initialized; // indicates if socket is initialized
@@ -154,8 +155,9 @@ bool CanWrapper::writeCanMessage(int cobid, int msg[], int dlc, bool extended,
 	retval = write(m_socket, &frame, sizeof(struct can_frame));
 
 	if (retval < 0) {
-		perror("could not send");
-		printf("errno is %d\r\n", errno);
+		//perror("could not send");
+		LOG(Log::INF) << "Message not sent:("<<"Error code ["<<errno<<"])\n";
+		//printf("errno is %d\r\n", errno);
 		errorCode = errno;
 
 		return false;
@@ -305,7 +307,6 @@ bool CanWrapper::sdoRead(int nodeId, int index, int subindex,
 	retval = CanWrapper::writeCanMessage(cobid, msg, dlc, extended, rtr_frame, errorCode,
 			timeout);
 	if (!retval){
-		printf("Could not send CAN message. Error code:%d\n", errorCode);
 		output =false;
 	}
 	else{

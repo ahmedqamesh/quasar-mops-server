@@ -70,11 +70,11 @@ void DMOPSMonitoring::updateMopsMonitoring(int nodeId, struct timeval timeout,
 		getAddressSpaceLink()->setNumberOfEntries(numberOfEntries_value, OpcUa_Good);
 	}
 
-	bool VMODGND = false;
-	VMODGND = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2310, 1, timeout, dlc);
-	if (VMODGND) {
-		int VMODGND_value = CanLibrary::CanWrapper::getSdoData();
-		getAddressSpaceLink()->setVMODGND(VMODGND_value, OpcUa_Good);
+	bool VBANDGAP = false;
+	VBANDGAP = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2310, 1, timeout, dlc);
+	if (VBANDGAP) {
+		int VBANDGAP_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setVBANDGAP(VBANDGAP_value, OpcUa_Good);
 	}
 
 

@@ -64,30 +64,28 @@ DADCChannels::~DADCChannels() {
 // 3333333333333333333333333333333333333333333333333333333333333333333333333
 void DADCChannels::updateAdcChannels(int nodeId, struct timeval timeout,
 		int dlc) {
+	int index = 0x2400;
 	bool numberOfEntries = false;
-	numberOfEntries = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2400, 0,
-			timeout, dlc);
+	numberOfEntries = CanLibrary::CanWrapper::sdoRead(nodeId, index, 0, timeout, dlc);
 	if (numberOfEntries) {
 		int numberOfEntries_value = CanLibrary::CanWrapper::getSdoData();
-		getAddressSpaceLink()->setNumberOfEntries(numberOfEntries_value,
-				OpcUa_Good);
+		getAddressSpaceLink()->setNumberOfEntries(numberOfEntries_value, OpcUa_Good);
 	}
-
 	bool ch3 = false;
-	ch3 = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2400, 1, timeout, dlc);
+	ch3 = CanLibrary::CanWrapper::sdoRead(nodeId, index, 1, timeout, dlc);
 	if (ch3) {
 		int ch3_value = CanLibrary::CanWrapper::getSdoData();
 		getAddressSpaceLink()->setCh3(ch3_value, OpcUa_Good);
 	}
 
 	bool ch4 = false;
-	ch4 = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2400, 2, timeout, dlc);
+	ch4 = CanLibrary::CanWrapper::sdoRead(nodeId, index, 2, timeout, dlc);
 	if (ch4) {
 		int ch4_value = CanLibrary::CanWrapper::getSdoData();
 		getAddressSpaceLink()->setCh4(ch4_value, OpcUa_Good);
 	}
 
-	/*
+/*
 	 getAddressSpaceLink()->setCh5(rand(), OpcUa_Good);
 	 getAddressSpaceLink()->setCh6(rand(), OpcUa_Good);
 	 getAddressSpaceLink()->setCh7(rand(), OpcUa_Good);

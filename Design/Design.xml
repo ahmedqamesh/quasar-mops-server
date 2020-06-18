@@ -9,11 +9,6 @@
   <d:class name="MOPS">
   	<d:devicelogic></d:devicelogic>
   	<d:cachevariable initializeWith="valueAndStatus"
-  		dataType="UaString" name="location" nullPolicy="nullAllowed"
-  		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
-  		initialValue="0">
-  	</d:cachevariable>
-  	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Double" name="portNumber" nullPolicy="nullAllowed"
   		addressSpaceWrite="regular" initialStatus="OpcUa_Good"
   		initialValue="0">
@@ -33,6 +28,15 @@
   	<d:hasobjects instantiateUsing="configuration"
   		class="MOPSConfiguration" maxOccurs="1" minOccurs="1">
   	</d:hasobjects>
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Int16" name="status" nullPolicy="nullAllowed"
+  		addressSpaceWrite="regular"
+  		initialStatus="OpcUa_BadWaitingForInitialData" initialValue="0">
+  	</d:cachevariable>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="UaString" name="location" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
 
   </d:class>
   <d:class name="PP3Location">
@@ -296,7 +300,7 @@
   		initialValue="-100">
   	</d:cachevariable>
   	<d:cachevariable initializeWith="valueAndStatus"
-  		dataType="OpcUa_Double" name="VMODGND" nullPolicy="nullAllowed"
+  		dataType="OpcUa_Double" name="VBANDGAP" nullPolicy="nullAllowed"
   		addressSpaceWrite="regular" initialStatus="OpcUa_BadWaitingForInitialData"
   		initialValue="-100">
   	</d:cachevariable>
