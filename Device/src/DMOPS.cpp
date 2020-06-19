@@ -89,7 +89,6 @@ void DMOPS::updateMOPS(const double portNumber)
 	int nodeId =1;
     struct timeval timeout;
     int dlc = 8;// Set data length
-
 	for (DADCChannels* adc : adcchannelss())
 		adc->updateAdcChannels(nodeId,timeout,dlc);
 	for (DMOPSConfiguration* config : mopsconfigurations())

@@ -66,7 +66,17 @@ namespace Device
     /* fill up constructor initialization list here */
   {
     /* fill up constructor body here */
-	    LOG(Log::INF)<<"port number="<< config.port();
+	 //   LOG(Log::INF)<<"port number="<< config.port();
+		//define variables for the CAN channel
+		int portNumber;
+		portNumber = port();
+		int errorCode;
+		string can = "can";
+		string canport;
+		canport = can+to_string(portNumber);
+		//open CAN port [Binding the socket can0 to all CAN interfaces]
+		CanLibrary::CanWrapper::openPort(canport.c_str() , errorCode);
+
   }
 
   /* sample dtr */
@@ -86,12 +96,6 @@ namespace Device
 	//define variables for the CAN channel
 	int portNumber;
 	portNumber = port();
-	int errorCode;
-	string can = "can";
-	string canport;
-	canport = can+to_string(portNumber);
-	//open CAN port [Binding the socket can0 to all CAN interfaces]
-	CanLibrary::CanWrapper::openPort(canport.c_str() , errorCode);
 	for (DMOPS* mops : mopss())
   		mops->updateMOPS(portNumber);
   }

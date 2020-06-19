@@ -77,12 +77,16 @@
   </d:class>
   <d:class name="MOMO">
   	<d:devicelogic></d:devicelogic>
-  	<d:configentry dataType="OpcUa_UInt32" name="identifier"
-  		storedInDeviceObject="true">
-  	</d:configentry>
   	<d:hasobjects instantiateUsing="configuration" class="MOPS"
   		maxOccurs="2">
   	</d:hasobjects>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="UaString" name="location" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
+  	<d:configentry dataType="OpcUa_Double" name="portNumber"
+  		storedInDeviceObject="true">
+  	</d:configentry>
   </d:class>
   <d:class name="CanBus">
   	<d:devicelogic></d:devicelogic>
@@ -105,7 +109,7 @@
   	<d:cachevariable initializeWith="configuration"
   		dataType="OpcUa_UInt32" name="networkAddresses" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
-  	</d:cachevariable><d:cachevariable initializeWith="configuration" dataType="OpcUa_Double" name="ConnectedMOPSs" nullPolicy="nullAllowed" addressSpaceWrite="regular">
+  	</d:cachevariable><d:cachevariable initializeWith="configuration" dataType="OpcUa_Double" name="connectedMOPSs" nullPolicy="nullAllowed" addressSpaceWrite="regular">
   	</d:cachevariable>
   	<d:hasobjects instantiateUsing="configuration" class="MOPS"
   		maxOccurs="4" minOccurs="0">
@@ -317,7 +321,7 @@
   		addressSpaceWrite="forbidden">
   	</d:cachevariable>
   	<d:cachevariable initializeWith="valueAndStatus"
-  		dataType="OpcUa_Double" name="ADCtrimmingBits"
+  		dataType="OpcUa_Double" name="ADCTrimmingBits"
   		nullPolicy="nullAllowed" addressSpaceWrite="regular"
   		initialStatus="OpcUa_BadWaitingForInitialData" initialValue="-100">
   	</d:cachevariable>

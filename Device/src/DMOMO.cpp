@@ -26,15 +26,12 @@
 
 #include <DMOMO.h>
 #include <ASMOMO.h>
-
-
-#include <DTemperatureModule.h>
-
-#include <DCanBusMonitoring.h>
-
-
-
-
+#include <DMOPS.h>
+#include <string>
+#include <iostream>
+#include <sstream>
+using namespace std;
+#include "CanWrapper.h"
 namespace Device
 {
 
@@ -84,8 +81,10 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
   void DMOMO::updateMOMO(){
-	  //for (DPP3Location* location : pp3locations())
-	  //location->update();
+	int port;
+	port = portNumber();
+	 // for (DMOPS* mops : mopss())
+	//  		mops->updateMOPS(portNumber);
   }
 
 

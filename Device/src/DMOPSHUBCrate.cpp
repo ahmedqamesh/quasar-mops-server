@@ -69,7 +69,7 @@ namespace Device
     /* fill up constructor initialization list here */
   {
     /* fill up constructor body here */
-	  LOG(Log::INF)<<"Crate ID="<< config.identifier();
+	  //LOG(Log::INF)<<"Crate ID="<< config.identifier();
   }
 
   /* sample dtr */
@@ -89,7 +89,6 @@ namespace Device
   void DMOPSHUBCrate::update(){
   	for (DCanBus* canbus : canbuss())
   		canbus->updateCanBus();
-
 
   	for (DMOMO* momo : momos())
   		momo->updateMOMO();

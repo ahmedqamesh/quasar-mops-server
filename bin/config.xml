@@ -5,17 +5,16 @@
 		<PP3Location name="Y3523X0" address="Y3523X0">
 			<MOPSHUBCrate powerOn="true" name="Crate0" identifier="0"
 				onOffCrate="true" id="0">
-				<CanBus port="0.0" name="CAN0" listenOnly="true" type=""
-					speed="" controlEnabled="true" ConnectedMOPSs="0.0"
+				<CanBus port="0.0" name="CAN0" listenOnly="true"
+					connectedMOPSs="0.0" type="" speed="" controlEnabled="true"
 					networkAddresses="0">
-					<MOPS location="stave0" name="MOPS0" nodeId="1">
+					<MOPS location="MOPS0" name='MOPS0' nodeId="1">
 						<ADCChannels name="ADCChannels"></ADCChannels>
 						<MOPSConfiguration readFEMonitoringValues="0.0"
 							name="Regs">
 						</MOPSConfiguration>
 						<MOPSMonitoring name="MonVals"></MOPSMonitoring></MOPS>
 				</CanBus>
-				<MOMO name="MOMO0" identifier="0"></MOMO>
 			</MOPSHUBCrate>
 		</PP3Location></DcsMoPSControlServer>
 	

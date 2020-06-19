@@ -70,6 +70,7 @@ bool CanWrapper::openPort(const char *interfaceName, int &errorCode) {
 	ret = ioctl(m_socket, SIOCGIFINDEX, &ifr);
 	if (ret) {
 		errorCode = errno;
+		std::cout << "errno" << errno ;
 		return false;
 	}
 	//printf("Binding the socket %s to all CAN interfaces\n", interfaceName);
@@ -155,7 +156,7 @@ bool CanWrapper::writeCanMessage(int cobid, int msg[], int dlc, bool extended,
 	retval = write(m_socket, &frame, sizeof(struct can_frame));
 
 	if (retval < 0) {
-		//perror("could not send");
+		perror("could not send\n");
 		LOG(Log::INF) << "Message not sent:("<<"Error code ["<<errno<<"])\n";
 		//printf("errno is %d\r\n", errno);
 		errorCode = errno;
