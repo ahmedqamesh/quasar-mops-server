@@ -64,60 +64,253 @@ DADCChannels::~DADCChannels() {
 // 3333333333333333333333333333333333333333333333333333333333333333333333333
 void DADCChannels::updateAdcChannels(int nodeId, struct timeval timeout,
 		int dlc) {
-	int index = 0x2400;
+	int channel_index = 0x2400;
 	bool numberOfEntries = false;
-	numberOfEntries = CanLibrary::CanWrapper::sdoRead(nodeId, index, 0, timeout, dlc);
+	numberOfEntries = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 0,
+			timeout, dlc);
 	if (numberOfEntries) {
 		int numberOfEntries_value = CanLibrary::CanWrapper::getSdoData();
-		getAddressSpaceLink()->setNumberOfEntries(numberOfEntries_value, OpcUa_Good);
+		getAddressSpaceLink()->setNumberOfEntries(numberOfEntries_value,
+				OpcUa_Good);
 	}
 	bool ch3 = false;
-	ch3 = CanLibrary::CanWrapper::sdoRead(nodeId, index, 1, timeout, dlc);
+	ch3 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 1, timeout,
+			dlc);
 	if (ch3) {
 		int ch3_value = CanLibrary::CanWrapper::getSdoData();
 		getAddressSpaceLink()->setCh3(ch3_value, OpcUa_Good);
 	}
 
 	bool ch4 = false;
-	ch4 = CanLibrary::CanWrapper::sdoRead(nodeId, index, 2, timeout, dlc);
+	ch4 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 2, timeout,
+			dlc);
 	if (ch4) {
 		int ch4_value = CanLibrary::CanWrapper::getSdoData();
 		getAddressSpaceLink()->setCh4(ch4_value, OpcUa_Good);
 	}
 
-/*
-	 getAddressSpaceLink()->setCh5(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh6(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh7(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh8(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh9(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh10(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh11(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh12(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh13(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh14(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh15(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh16(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh17(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh18(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh19(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh20(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh21(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh22(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh23(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh24(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh25(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh26(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh27(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh28(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh29(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh30(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh31(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh32(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh33(rand(), OpcUa_Good);
-	 getAddressSpaceLink()->setCh34(rand(), OpcUa_Good);
+	bool ch5 = false;
+	ch5 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 3, timeout,
+			dlc);
+	if (ch5) {
+		int ch5_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh5(ch5_value, OpcUa_Good);
+	}
 
-	 */
+	bool ch6 = false;
+	ch6 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 4, timeout,
+			dlc);
+	if (ch6) {
+		int ch6_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh6(ch6_value, OpcUa_Good);
+	}
+
+	bool ch7 = false;
+	ch7 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 5, timeout,
+			dlc);
+	if (ch7) {
+		int ch7_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh7(ch7_value, OpcUa_Good);
+	}
+
+	bool ch8 = false;
+	ch8 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 6, timeout,
+			dlc);
+	if (ch8) {
+		int ch8_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh8(ch8_value, OpcUa_Good);
+	}
+
+	bool ch9 = false;
+	ch9 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 7, timeout,
+			dlc);
+	if (ch9) {
+		int ch9_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh9(ch9_value, OpcUa_Good);
+	}
+
+	bool ch10 = false;
+	ch10 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 8, timeout,
+			dlc);
+	if (ch10) {
+		int ch10_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh10(ch10_value, OpcUa_Good);
+	}
+
+	bool ch11 = false;
+	ch11 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 9, timeout,
+			dlc);
+	if (ch11) {
+		int ch11_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh11(ch11_value, OpcUa_Good);
+	}
+
+	bool ch12 = false;
+	ch12 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 10, timeout,
+			dlc);
+	if (ch12) {
+		int ch12_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh12(ch12_value, OpcUa_Good);
+	}
+
+	bool ch13 = false;
+	ch13 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 11, timeout,
+			dlc);
+	if (ch13) {
+		int ch13_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh13(ch13_value, OpcUa_Good);
+	}
+	bool ch14 = false;
+	ch14 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 12, timeout,
+			dlc);
+	if (ch14) {
+		int ch14_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh14(ch14_value, OpcUa_Good);
+	}
+
+	bool ch15 = false;
+	ch15 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 13, timeout,
+			dlc);
+	if (ch15) {
+		int ch15_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh15(ch15_value, OpcUa_Good);
+	}
+	bool ch16 = false;
+	ch16 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 14, timeout,
+			dlc);
+	if (ch16) {
+		int ch16_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh16(ch16_value, OpcUa_Good);
+	}
+
+	bool ch17 = false;
+	ch17 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 15, timeout,
+			dlc);
+	if (ch17) {
+		int ch17_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh17(ch17_value, OpcUa_Good);
+	}
+	bool ch18 = false;
+	ch18 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 16, timeout,
+			dlc);
+	if (ch18) {
+		int ch18_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh18(ch18_value, OpcUa_Good);
+	}
+	bool ch19 = false;
+	ch19 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 17, timeout,
+			dlc);
+	if (ch19) {
+		int ch19_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh19(ch19_value, OpcUa_Good);
+	}
+	bool ch20 = false;
+	ch20 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 18, timeout,
+			dlc);
+	if (ch20) {
+		int ch20_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh20(ch20_value, OpcUa_Good);
+	}
+	bool ch21 = false;
+	ch21 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 19, timeout,
+			dlc);
+	if (ch21) {
+		int ch21_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh21(ch21_value, OpcUa_Good);
+	}
+
+	bool ch22 = false;
+	ch22 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 20, timeout,
+			dlc);
+	if (ch22) {
+		int ch22_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh22(ch22_value, OpcUa_Good);
+	}
+	bool ch23 = false;
+	ch23 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 21, timeout,
+			dlc);
+	if (ch23) {
+		int ch23_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh23(ch23_value, OpcUa_Good);
+	}
+	bool ch24 = false;
+	ch24 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 22, timeout,
+			dlc);
+	if (ch24) {
+		int ch24_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh24(ch24_value, OpcUa_Good);
+	}
+	bool ch25 = false;
+	ch25 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 23, timeout,
+			dlc);
+	if (ch25) {
+		int ch25_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh25(ch25_value, OpcUa_Good);
+	}
+	bool ch26 = false;
+	ch26 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 24, timeout,
+			dlc);
+	if (ch26) {
+		int ch26_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh26(ch26_value, OpcUa_Good);
+	}
+	bool ch27 = false;
+	ch27 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 25, timeout,
+			dlc);
+	if (ch27) {
+		int ch27_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh27(ch27_value, OpcUa_Good);
+	}
+	bool ch28 = false;
+	ch28 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 26, timeout,
+			dlc);
+	if (ch28) {
+		int ch28_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh28(ch28_value, OpcUa_Good);
+	}
+	bool ch29 = false;
+	ch29 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 27, timeout,
+			dlc);
+	if (ch29) {
+		int ch29_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh29(ch29_value, OpcUa_Good);
+	}
+	bool ch30 = false;
+	ch30 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 28, timeout,
+			dlc);
+	if (ch30) {
+		int ch30_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh30(ch30_value, OpcUa_Good);
+	}
+	bool ch31 = false;
+	ch31 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 29, timeout,
+			dlc);
+	if (ch31) {
+		int ch31_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh31(ch31_value, OpcUa_Good);
+	}
+	bool ch32 = false;
+	ch32 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 30, timeout,
+			dlc);
+	if (ch32) {
+		int ch32_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh32(ch32_value, OpcUa_Good);
+	}
+	bool ch33 = false;
+	ch33 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 31, timeout,
+			dlc);
+	if (ch33) {
+		int ch33_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh33(ch33_value, OpcUa_Good);
+	}
+	bool ch34 = false;
+	ch34 = CanLibrary::CanWrapper::sdoRead(nodeId, channel_index, 32, timeout,
+			dlc);
+	if (ch34) {
+		int ch34_value = CanLibrary::CanWrapper::getSdoData();
+		getAddressSpaceLink()->setCh34(ch34_value, OpcUa_Good);
+	}
+
 }
 
 }

@@ -15,6 +15,7 @@
 						</MOPSConfiguration>
 						<MOPSMonitoring name="MonVals"></MOPSMonitoring></MOPS>
 				</CanBus>
+				<MOMO location="Y3523X0/Crate0" name="MOMO0" portNumber="0.0"></MOMO>
 			</MOPSHUBCrate>
 		</PP3Location></DcsMoPSControlServer>
 	

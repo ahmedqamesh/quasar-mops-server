@@ -63,15 +63,16 @@ DMOPSMonitoring::~DMOPSMonitoring() {
 // 3333333333333333333333333333333333333333333333333333333333333333333333333
 void DMOPSMonitoring::updateMopsMonitoring(int nodeId, struct timeval timeout,
 		int dlc) {
+	int mon_index = 0x2310;
 	bool numberOfEntries = false;
-	numberOfEntries = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2310, 0, timeout, dlc);
+	numberOfEntries = CanLibrary::CanWrapper::sdoRead(nodeId, mon_index, 0, timeout, dlc);
 	if (numberOfEntries) {
 		int numberOfEntries_value = CanLibrary::CanWrapper::getSdoData();
 		getAddressSpaceLink()->setNumberOfEntries(numberOfEntries_value, OpcUa_Good);
 	}
 
 	bool VBANDGAP = false;
-	VBANDGAP = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2310, 1, timeout, dlc);
+	VBANDGAP = CanLibrary::CanWrapper::sdoRead(nodeId, mon_index, 1, timeout, dlc);
 	if (VBANDGAP) {
 		int VBANDGAP_value = CanLibrary::CanWrapper::getSdoData();
 		getAddressSpaceLink()->setVBANDGAP(VBANDGAP_value, OpcUa_Good);
@@ -79,7 +80,7 @@ void DMOPSMonitoring::updateMopsMonitoring(int nodeId, struct timeval timeout,
 
 
 	bool VCANSEN = false;
-	VCANSEN = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2310, 2, timeout, dlc);
+	VCANSEN = CanLibrary::CanWrapper::sdoRead(nodeId, mon_index, 2, timeout, dlc);
 	if (VCANSEN) {
 		int VCANSEN_value = CanLibrary::CanWrapper::getSdoData();
 		getAddressSpaceLink()->setVCANSEN(VCANSEN_value, OpcUa_Good);
@@ -87,7 +88,7 @@ void DMOPSMonitoring::updateMopsMonitoring(int nodeId, struct timeval timeout,
 
 
 	bool VGNDSEN = false;
-	VGNDSEN = CanLibrary::CanWrapper::sdoRead(nodeId, 0x2310, 3, timeout, dlc);
+	VGNDSEN = CanLibrary::CanWrapper::sdoRead(nodeId, mon_index, 3, timeout, dlc);
 	if (VGNDSEN) {
 		int VGNDSEN_value = CanLibrary::CanWrapper::getSdoData();
 		getAddressSpaceLink()->setVGNDSEN(VGNDSEN_value, OpcUa_Good);
