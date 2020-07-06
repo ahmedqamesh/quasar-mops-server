@@ -3,20 +3,25 @@
 	
 	<DcsMoPSControlServer name="DetectorServices">
 		<PP3Location name="Y3523X0" address="Y3523X0">
-			<MOPSHUBCrate powerOn="true" name="Crate0" identifier="0"
-				onOffCrate="true" id="0">
-				<CanBus port="0.0" name="CAN0" listenOnly="true"
-					connectedMOPSs="0.0" type="" speed="" controlEnabled="true"
+			<MOPSHUBCrate name="Crate0" identifier="0" id="0">
+				<CanBus port="0" name="CAN0" connectedMOPSs="0"
 					networkAddresses="0">
-					<MOPS location="MOPS0" name='MOPS0' nodeId="1">
-						<ADCChannels name="ADCChannels"></ADCChannels>
+					<MOPS location="Y3523X0/CAN0" name="MOPS0" nodeId="1">
+						<MOPSMonitoring name="MonVals"></MOPSMonitoring>
 						<MOPSConfiguration readFEMonitoringValues="0.0"
 							name="Regs">
 						</MOPSConfiguration>
-						<MOPSMonitoring name="MonVals"></MOPSMonitoring></MOPS>
+						<ADCChannel channelSubIndex="0" name="Ch0"
+							physicalParameter="Temp">
+						</ADCChannel>
+						<ADCChannel channelSubIndex="1" name="Ch1"
+							physicalParameter="V">
+						</ADCChannel>
+						<ADCChannel channelSubIndex="2" name="Ch2"
+							physicalParameter="V">
+						</ADCChannel></MOPS>
 				</CanBus>
-				<MOMO location="Y3523X0/Crate0" name="MOMO0" portNumber="0.0"></MOMO>
-			</MOPSHUBCrate>
+				<MOMO location="Y3523X0" port="0" name="MOMO0"></MOMO></MOPSHUBCrate>
 		</PP3Location></DcsMoPSControlServer>
 	
 </configuration>

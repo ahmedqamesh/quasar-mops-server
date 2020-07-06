@@ -26,7 +26,7 @@
 
 #include <DMOPS.h>
 #include <ASMOPS.h>
-#include <DADCChannels.h>
+#include <DADCChannel.h>
 #include <DMOPSMonitoring.h>
 #include <DMOPSConfiguration.h>
 #include "CanWrapper.h"
@@ -89,11 +89,12 @@ void DMOPS::updateMOPS(const double portNumber)
 	int nodeId =1;
     struct timeval timeout;
     int dlc = 8;// Set data length
-	for (DADCChannels* adc : adcchannelss())
-		adc->updateAdcChannels(nodeId,timeout,dlc);
+	for (DADCChannel* adc : adcchannels())
+		adc->updateAdcChannel(nodeId,timeout,dlc);
 	for (DMOPSConfiguration* config : mopsconfigurations())
 		config->updateMopsConfiguration(nodeId,timeout,dlc);
 	for (DMOPSMonitoring* monitor : mopsmonitorings())
 		monitor->updateMopsMonitoring(nodeId,timeout,dlc);
   }
+
 }

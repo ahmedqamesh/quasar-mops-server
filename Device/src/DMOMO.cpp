@@ -81,10 +81,11 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
   void DMOMO::updateMOMO(){
-	int port;
-	port = portNumber();
-	 // for (DMOPS* mops : mopss())
-	//  		mops->updateMOPS(portNumber);
+		//define variables for the CAN channel
+		int portNumber;
+		portNumber = port();
+		for (DMOPS* mops : mopss())
+	  		mops->updateMOPS(portNumber);
   }
 
 

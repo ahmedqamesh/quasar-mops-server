@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../Device/src/DADCChannel.cpp \
 ../Device/src/DADCChannels.cpp \
 ../Device/src/DCanBus.cpp \
 ../Device/src/DCanBusMonitoring.cpp \
@@ -17,6 +18,7 @@ CPP_SRCS += \
 ../Device/src/DTemperatureModule.cpp 
 
 OBJS += \
+./Device/src/DADCChannel.o \
 ./Device/src/DADCChannels.o \
 ./Device/src/DCanBus.o \
 ./Device/src/DCanBusMonitoring.o \
@@ -30,6 +32,7 @@ OBJS += \
 ./Device/src/DTemperatureModule.o 
 
 CPP_DEPS += \
+./Device/src/DADCChannel.d \
 ./Device/src/DADCChannels.d \
 ./Device/src/DCanBus.d \
 ./Device/src/DCanBusMonitoring.d \
