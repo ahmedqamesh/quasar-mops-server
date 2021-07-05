@@ -11,8 +11,8 @@
 						<MOPSConfiguration readFEMonitoringValues="0.0"
 							name="Regs">
 						</MOPSConfiguration>
-						<ADCChannel channelSubIndex="0" name="Ch0"
-							physicalParameter="Temp">
+						<ADCChannel channelSubIndex="0" name="NumberOfEntries"
+							physicalParameter="NumberOfEntries">
 						</ADCChannel>
 						<ADCChannel channelSubIndex="1" name="Ch1"
 							physicalParameter="V">

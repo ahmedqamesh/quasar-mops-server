@@ -85,7 +85,6 @@ void DMOPS::updateMOPS(const double portNumber)
   {
 	// Set port number
 	getAddressSpaceLink()->setPortNumber(portNumber,OpcUa_Good);
-	//LOG(Log::INF)<<"MOPS ID="<< nodeId();
 	int nodeId =1;
     struct timeval timeout;
     int dlc = 8;// Set data length
